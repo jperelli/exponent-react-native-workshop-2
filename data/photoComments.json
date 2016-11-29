@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "John",
+    "comment": "I ❤ you",
+    "profile": "https://randomuser.me/api/portraits/lego/4.jpg",
+    "creationDate": "2016-07-12T11:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "name": "Amelie",
+    "comment": "Haha funny guy 😂",
+    "profile": "https://randomuser.me/api/portraits/lego/3.jpg",
+    "creationDate": "2016-10-09T11:00:00.000Z"
+  }
+]
