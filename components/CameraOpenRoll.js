@@ -11,16 +11,16 @@ class CameraOpenRoll extends React.Component {
     this.showRoll = this.showRoll.bind(this);
   }
 
-  async showRoll() {
+  showRoll() {
     const imagePickerConfig = {
       allowsEditing: true,
       aspect: [1, 1]
     };
 
-    await ImagePicker.launchImageLibraryAsync(imagePickerConfig)
-    .then((result) => {
-      this.props.setPhoto(result);
-    });
+    ImagePicker.launchImageLibraryAsync(imagePickerConfig)
+      .then((result) => {
+        this.props.setPhoto(result);
+      });
   }
 
   render() {

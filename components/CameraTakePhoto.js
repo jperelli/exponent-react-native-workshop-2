@@ -11,20 +11,16 @@ class CameraTakePhoto extends React.Component {
     this.showCamera = this.showCamera.bind(this);
   }
 
-  async showCamera() {
+  showCamera() {
     const imagePickerConfig = {
       allowsEditing: true,
       aspect: [1, 1]
     };
 
-    await ImagePicker.launchCameraAsync(imagePickerConfig)
-    .then((result) => {
-      const photo = result;
-
-      if (photo.data) {
+    ImagePicker.launchCameraAsync(imagePickerConfig)
+      .then((result) => {
         this.props.setPhoto(result);
-      }
-    });
+      });
   }
 
   render() {
