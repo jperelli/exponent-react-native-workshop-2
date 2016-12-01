@@ -1,0 +1,242 @@
+[
+  {
+    "id": "1",
+    "username": "Image 1",
+    "url": "http://placeimg.com/401/401/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/1.jpg",
+    "location": "Durban, South Africa",
+    "likes": 24
+  },
+  {
+    "id": "2",
+    "username": "Image 2",
+    "url": "http://placeimg.com/402/402/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/2.jpg",
+    "location": "Casablanca, Morocco",
+    "likes": 632
+  },
+  {
+    "id": "3",
+    "username": "Image 3",
+    "url": "http://placeimg.com/403/403/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/3.jpg",
+    "location": "Sao Paulo, Brazil",
+    "likes": 12
+  },
+  {
+    "id": "4",
+    "username": "Image 4",
+    "url": "http://placeimg.com/404/404/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/4.jpg",
+    "location": "Johannesburg, South Africa",
+    "likes": 63
+  },
+  {
+    "id": "5",
+    "username": "Image 5",
+    "url": "http://placeimg.com/405/405/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/5.jpg",
+    "location": "Alexandria, Egypt",
+    "likes": 346
+  },
+  {
+    "id": "6",
+    "username": "Image 6",
+    "url": "http://placeimg.com/406/406/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/6.jpg",
+    "location": "Tokyo, Japan",
+    "likes": 74
+  },
+  {
+    "id": "7",
+    "username": "Image 7",
+    "url": "http://placeimg.com/407/407/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/7.jpg",
+    "location": "Berlin, Germany",
+    "likes": 72
+  },
+  {
+    "id": "8",
+    "username": "Image 8",
+    "url": "http://placeimg.com/408/408/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/8.jpg",
+    "location": "Lagos, Nigeria",
+    "likes": 5
+  },
+  {
+    "id": "9",
+    "username": "Image 9",
+    "url": "http://placeimg.com/409/409/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/9.jpg",
+    "location": "Madrid, Spain",
+    "likes": 9
+  },
+  {
+    "id": "10",
+    "username": "Image 10",
+    "url": "http://placeimg.com/410/410/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/4.jpg",
+    "location": "Moscow, Russia",
+    "likes": 36
+  },
+  {
+    "id": "11",
+    "username": "Image 11",
+    "url": "http://placeimg.com/411/411/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/1.jpg",
+    "location": "Los Angeles, United States",
+    "likes": 347
+  },
+  {
+    "id": "12",
+    "username": "Image 12",
+    "url": "http://placeimg.com/412/412/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/2.jpg",
+    "location": "Cape Town, South Africa",
+    "likes": 91
+  },
+  {
+    "id": "13",
+    "username": "Image 13",
+    "url": "http://placeimg.com/413/413/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/3.jpg",
+    "location": "Mumbai, India",
+    "likes": 29
+  },
+  {
+    "id": "14",
+    "username": "Image 14",
+    "url": "http://placeimg.com/414/414/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/4.jpg",
+    "location": "New York City, United States",
+    "likes": 8
+  },
+  {
+    "id": "15",
+    "username": "Image 15",
+    "url": "http://placeimg.com/415/415/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/5.jpg",
+    "location": "Hong Kong, China",
+    "likes": 26
+  },
+  {
+    "id": "16",
+    "username": "Image 16",
+    "url": "http://placeimg.com/416/416/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/6.jpg",
+    "location": "Lima, Peru",
+    "likes": 345
+  },
+  {
+    "id": "17",
+    "username": "Image 17",
+    "url": "http://placeimg.com/417/417/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/7.jpg",
+    "location": "Bogota, Colombia",
+    "likes": 9
+  },
+  {
+    "id": "18",
+    "username": "Image 18",
+    "url": "http://placeimg.com/418/418/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/8.jpg",
+    "location": "Buenos Aires, Argentina",
+    "likes": 262
+  },
+  {
+    "id": "19",
+    "username": "Image 19",
+    "url": "http://placeimg.com/419/419/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/9.jpg",
+    "location": "Barcelona, Spain",
+    "likes": 136
+  },
+  {
+    "id": "20",
+    "username": "Image 20",
+    "url": "http://placeimg.com/420/420/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/1.jpg",
+    "location": "Paris, France",
+    "likes": 1232
+  },
+  {
+    "id": "21",
+    "username": "Image 21",
+    "url": "http://placeimg.com/421/421/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/2.jpg",
+    "location": "Rome, Italy",
+    "likes": 44
+  },
+  {
+    "id": "22",
+    "username": "Image 22",
+    "url": "http://placeimg.com/422/422/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/3.jpg",
+    "location": "California, United States",
+    "likes": 246
+  },
+  {
+    "id": "23",
+    "username": "Image 23",
+    "url": "http://placeimg.com/423/423/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/4.jpg",
+    "location": "Shenzhen, China",
+    "likes": 89
+  },
+  {
+    "id": "24",
+    "username": "Image 24",
+    "url": "http://placeimg.com/424/424/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/5.jpg",
+    "location": "Shangai, China",
+    "likes": 93
+  },
+  {
+    "id": "25",
+    "username": "Image 25",
+    "url": "http://placeimg.com/425/425/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/6.jpg",
+    "location": "Mexico City, Mexico",
+    "likes": 27
+  },
+  {
+    "id": "26",
+    "username": "Image 26",
+    "url": "http://placeimg.com/426/426/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/7.jpg",
+    "location": "London, United Kingdom",
+    "likes": 373
+  },
+  {
+    "id": "27",
+    "username": "Image 27",
+    "url": "http://placeimg.com/427/427/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/8.jpg",
+    "location": "Addis Ababa, Ethiopia",
+    "likes": 213
+  },
+  {
+    "id": "28",
+    "username": "Image 28",
+    "url": "http://placeimg.com/428/428/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/9.jpg",
+    "location": "Ahmedabad, India",
+    "likes": 343
+  },
+  {
+    "id": "29",
+    "username": "Image 29",
+    "url": "http://placeimg.com/429/429/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/1.jpg",
+    "location": "Rio de Janeiro, Brazil",
+    "likes": 53
+  },
+  {
+    "id": "30",
+    "username": "Image 30",
+    "url": "http://placeimg.com/430/430/any",
+    "profilePicture": "https://randomuser.me/api/portraits/lego/2.jpg",
+    "location": "Ankara, Turkey",
+    "likes": 234
+  },
+]

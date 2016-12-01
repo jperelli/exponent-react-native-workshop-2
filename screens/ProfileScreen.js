@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View, Alert, AsyncStorage,
          StyleSheet } from 'react-native';
-import Exponent from 'exponent';
+import Exponent, { Permissions } from 'exponent';
 import { map, includes } from 'lodash';
 import Colors from '../constants/Colors';
 import googleConfig from '../constants/Google';
@@ -28,31 +28,47 @@ class ProfileScreen extends React.Component {
       enableHighAccuracy: true
     };
 
-    Exponent.Location.getCurrentPositionAsync(options)
+    Permissions.getAsync(Permissions.LOCATION)
     .then((response) => {
-      const infoUrl = googleConfig.getInfoUrl(response.coords.latitude, response.coords.longitude);
+      const { status } = response;
 
-      return fetch(infoUrl)
-      .then(resp => resp.json())
-      .then((json) => {
-        const locationInfo = json.results[0];
-        let locality;
-        let country;
+      if (status === 'denied') {
+        Alert.alert('Please allow Location permission from your phone configuration');
+      } else {
+        Permissions.askAsync(Permissions.LOCATION)
+        .then((res) => {
+          const { status } = res;
 
-        map(locationInfo.address_components, (component) => {
-          if (includes(component.types, 'locality')) {
-            locality = component.long_name;
-          } else if (includes(component.types, 'country')) {
-            country = component.long_name;
+          if (status === 'granted') {
+            Exponent.Location.getCurrentPositionAsync(options)
+            .then((response) => {
+              const infoUrl = googleConfig.getInfoUrl(response.coords.latitude, response.coords.longitude);
+
+              return fetch(infoUrl)
+              .then(resp => resp.json())
+              .then((json) => {
+                const locationInfo = json.results[0];
+                let locality;
+                let country;
+
+                map(locationInfo.address_components, (component) => {
+                  if (includes(component.types, 'locality')) {
+                    locality = component.long_name;
+                  } else if (includes(component.types, 'country')) {
+                    country = component.long_name;
+                  }
+                });
+
+                this.setState({
+                  name: `${locality}, ${country}`,
+                  lat: locationInfo.geometry.location.lat,
+                  lng: locationInfo.geometry.location.lng
+                });
+              });
+            });
           }
         });
-
-        this.setState({
-          name: `${locality}, ${country}`,
-          lat: locationInfo.geometry.location.lat,
-          lng: locationInfo.geometry.location.lng
-        });
-      });
+      }
     });
   }
 
