@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View, StyleSheet, Vibration } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import Colors from '../constants/Colors';
 import Header from '../components/Header';
