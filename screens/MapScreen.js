@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { NavigationStyles } from '@exponent/ex-navigation';
 import Colors from '../constants/Colors';
 import Header from '../components/Header';
@@ -8,11 +8,11 @@ import PhotoGrid from '../components/PhotoGrid';
 
 const MapScreen = props => (
   <View style={styles.container}>
-    // TODO: Remove map and use placeholder View
-    <Map
-      latitude={props.route.params.latitude}
-      longitude={props.route.params.longitude}
-    />
+    <View style={styles.placeholder}>
+      <Text style={styles.placeholderText}>
+        Put your map here
+      </Text>
+    </View>
 
     <PhotoGrid />
   </View>
@@ -37,6 +37,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end'
+  },
+  placeholder: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    height: 100,
+    backgroundColor: 'skyblue'
+  },
+  placeholderText: {
+    fontSize: 20,
+    textAlign: 'center'
   }
 });
 
