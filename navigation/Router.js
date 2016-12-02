@@ -8,7 +8,7 @@ import RootNavigation from './RootNavigation';
 
 const Router = createRouter(() =>
    ({
-     photoComments: () => PhotoCommentsScreen,
+     photoComments: () => PhotoCommentsScreen,  // CommentScreen
      photoGallery: () => PhotoGalleryScreen,
      profile: () => ProfileScreen,
      camera: () => CameraScreen,

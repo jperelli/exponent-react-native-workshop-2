@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@exponent/vector-icons';
 import { withNavigation } from '@exponent/ex-navigation';
 import moment from 'moment';
@@ -15,7 +15,16 @@ class PhotoFooter extends React.Component {
   }
 
   goToComments() {
-    this.props.navigator.push(Router.getRoute('photoComments'));
+    /**
+    YOUR ASSIGNMENT:
+      Use the navigator (this.props.navigator) to open the comments screen.
+      The comment screen is defined in Router.js.
+      It's defined by name as 'photoComments'.
+    */
+    Alert.alert(
+      'You should remove this alert and take me to the comments screen 🍰',
+      null
+    );
   }
 
   render() {
