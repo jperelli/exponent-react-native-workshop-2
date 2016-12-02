@@ -28,16 +28,10 @@ class PhotoList extends React.Component {
   }
 
   getPhotos() {
-    return AsyncStorage.getAllKeys((err, keys) => {
-      if (err) {
-          // console.log("error:", error);
-      }
-
-      AsyncStorage.multiGet(keys.sort(), (error, stores) => {
-        if (err) {
-            // console.log("error:", error);
-        }
-
+    // TODO: Remove getPhotos logic. Place hint about AsyncStorage
+    return AsyncStorage.getAllKeys()
+      .then(keys => AsyncStorage.multiGet(keys.sort()))
+      .then((stores) => {
         const photos = [];
 
         stores.map((result, i, store) => {
@@ -66,7 +60,6 @@ class PhotoList extends React.Component {
 
         this.setState({ photos });
       });
-    });
   }
 
   renderPhotos() {

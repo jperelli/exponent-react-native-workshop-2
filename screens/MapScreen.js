@@ -8,6 +8,7 @@ import PhotoGrid from '../components/PhotoGrid';
 
 const MapScreen = props => (
   <View style={styles.container}>
+    // TODO: Remove map and use placeholder View
     <Map
       latitude={props.route.params.latitude}
       longitude={props.route.params.longitude}

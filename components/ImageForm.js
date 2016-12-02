@@ -33,6 +33,7 @@ class ImageForm extends React.Component {
   }
 
   savePhoto() {
+    // TODO: Remove savePhoto logic. Place hint about AsyncStorage
     // Set default caption if empty
     if (!this.props.caption) this.props.setCaption('Funny text goes here 😁');
 
