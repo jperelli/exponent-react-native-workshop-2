@@ -33,36 +33,17 @@ class ImageForm extends React.Component {
   }
 
   savePhoto() {
-    // TODO: Remove savePhoto logic. Place hint about AsyncStorage
-    // Set default caption if empty
-    if (!this.props.caption) this.props.setCaption('Funny text goes here 😁');
-
-    const imageKey = moment().format();
-    const imageToSave = {
-      uri: this.props.photo.uri,
-      caption: this.props.caption
-    };
-
-    AsyncStorage.setItem(
-      imageKey,
-      JSON.stringify(imageToSave),
-      (err) => {
-        if (err) {
-          // console.log('ERROR: ', err);
-        } else {
-          // clean photo and caption
-          this.props.setPhoto({});
-          this.props.setCaption('');
-
-          Alert.alert(
-            'Saved!',
-            'Redirecting to photo gallery...',
-            [
-              { text: 'OK', onPress: () => this.goToGallery() }
-            ]
-          );
-        }
-      }
+    /**
+    YOUR ASSIGNMENT:
+      Use AsyncStorage to save the photo taken by ImagePicker.
+    */
+    console.log(this.props.photo);
+    Alert.alert(
+      'Saved!',
+      'Redirecting to photo gallery...',
+      [
+        { text: 'OK', onPress: () => this.goToGallery() }
+      ]
     );
   }
 

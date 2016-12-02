@@ -3,6 +3,8 @@ import { ScrollView, Text, StyleSheet,
          AsyncStorage, RefreshControl } from 'react-native';
 import PhotoDetail from './PhotoDetail';
 
+import moment from 'moment';
+
 class PhotoList extends React.Component {
   constructor(props) {
     super(props);
@@ -28,38 +30,30 @@ class PhotoList extends React.Component {
   }
 
   getPhotos() {
-    // TODO: Remove getPhotos logic. Place hint about AsyncStorage
-    return AsyncStorage.getAllKeys()
-      .then(keys => AsyncStorage.multiGet(keys.sort()))
-      .then((stores) => {
-        const photos = [];
-
-        stores.map((result, i, store) => {
-            // get at each store's key/value so you can work with it
-          const key = store[i][0];
-          const value = JSON.parse(store[i][1]);
-
-          const uri = value.uri;
-          const caption = value.caption;
-
-          const photo = {
-            id: key,
-            caption,
-            url: uri,
-            username: 'Anonymous',
-            profilePicture: 'https://randomuser.me/api/portraits/lego/1.jpg',
-            location: 'Unknown',
-            likes: 0,
-            latitude: 35,
-            longitude: 74,
-            creationDate: key
-          };
-
-          return photos.unshift(photo);
-        });
-
-        this.setState({ photos });
-      });
+    /**
+    YOUR ASSIGNMENT:
+      Use AsyncStorage to retrieve all the photos saved by the ImagePicker
+      component.
+    */
+    // THIS IS PLACEHOLDER CODE //
+    return new Promise((resolve, reject) => {
+      const now = moment().format();
+      this.setState({
+        photos: [{
+          id: now,
+          caption: 'Photo Caption',
+          url: 'http://placeimg.com/401/401/any',
+          username: 'Anonymous',
+          profilePicture: 'https://randomuser.me/api/portraits/lego/1.jpg',
+          location: 'San Francisco, CA',
+          likes: 0,
+          latitude: 35,
+          longitude: 74,
+          creationDate: now
+        }]
+      }, resolve);
+    });
+    // THIS IS PLACEHOLDER CODE //
   }
 
   renderPhotos() {
