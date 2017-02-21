@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { View, Text, Alert, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import { Ionicons } from '@exponent/vector-icons';
 import moment from 'moment';
 import Colors from '../constants/Colors';
@@ -12,16 +13,7 @@ class PhotoFooter extends React.Component {
   }
 
   goToComments() {
-    /**
-    YOUR ASSIGNMENT:
-      Use navigation to open the comments screen.
-      The comment screen is defined in Router.js.
-      It's defined by name as 'Comments'.
-    */
-    Alert.alert(
-      'You should remove this alert and take me to the comments screen 🍰',
-      null,
-    );
+    this.props.navigation.navigate('Comments');
   }
 
   render() {
@@ -87,7 +79,7 @@ PhotoFooter.propTypes = {
   likes: PropTypes.number,
   isLiked: PropTypes.bool,
   likePhoto: PropTypes.func.isRequired,
-  navigator: PropTypes.array,
+  navigation: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
@@ -150,4 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PhotoFooter;
+export default withNavigation(PhotoFooter);
