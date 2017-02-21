@@ -1,7 +1,7 @@
 import Exponent from 'exponent';
 import React from 'react';
 import cacheAssetsAsync from './utils/cacheAssetsAsync';
-import MainTabsNavigator from './navigators/MainTabsNavigator';
+import GalleryStackNavigator from './navigators/GalleryStackNavigator';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class AppContainer extends React.Component {
   render() {
     if (this.state.appIsReady) {
       return (
-        <MainTabsNavigator />
+        <GalleryStackNavigator />
       );
     }
 
