@@ -26,7 +26,7 @@ OptionItem.propTypes = {
   icon: PropTypes.string,
   iconColor: PropTypes.string,
   marginBottom: PropTypes.number,
-  onPress: PropTypes.func
+  onPress: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -36,26 +36,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderWidth: 1,
     borderColor: '#ddd',
-    padding: 6
+    padding: 6,
   },
 
   iconContainer: {
     width: 22,
     alignItems: 'center',
     borderRadius: 5,
-    padding: 3
+    padding: 3,
   },
 
   icon: {
     color: '#FFF',
-    fontSize: 16
+    fontSize: 16,
   },
 
   option: {
     fontSize: 14,
     fontWeight: '400',
-    paddingLeft: 15
-  }
+    paddingLeft: 15,
+  },
 });
 
 export default OptionItem;

@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import { View, Alert, AsyncStorage,
-         StyleSheet } from 'react-native';
+         Platform, StatusBar, StyleSheet } from 'react-native';
 import Exponent, { Permissions } from 'exponent';
+import { FontAwesome } from '@exponent/vector-icons';
 import { map, includes } from 'lodash';
 import Colors from '../constants/Colors';
 import googleConfig from '../constants/Google';
-import Header from '../components/Header';
 import ProfileCard from '../components/ProfileCard';
 import OptionItem from '../components/OptionItem';
 
@@ -17,7 +17,7 @@ class ProfileScreen extends React.Component {
       name: null,
       lat: null,
       lng: null,
-      locale: null
+      locale: null,
     };
     this.getPosition = this.getPosition.bind(this);
     this.getLocale = this.getLocale.bind(this);
@@ -25,7 +25,7 @@ class ProfileScreen extends React.Component {
 
   getPosition() {
     const options = {
-      enableHighAccuracy: true
+      enableHighAccuracy: true,
     };
 
     Permissions.getAsync(Permissions.LOCATION)
@@ -62,7 +62,7 @@ class ProfileScreen extends React.Component {
                 this.setState({
                   name: `${locality}, ${country}`,
                   lat: locationInfo.geometry.location.lat,
-                  lng: locationInfo.geometry.location.lng
+                  lng: locationInfo.geometry.location.lng,
                 });
               });
             });
@@ -76,7 +76,7 @@ class ProfileScreen extends React.Component {
     Exponent.Util.getCurrentLocaleAsync()
     .then((response) => {
       this.setState({
-        locale: response
+        locale: response,
       });
     });
   }
@@ -87,8 +87,8 @@ class ProfileScreen extends React.Component {
       'This action cannot be undone',
       [
         { text: 'Cancel', onPress: () => {} },
-        { text: 'OK', onPress: () => AsyncStorage.clear() }
-      ]
+        { text: 'OK', onPress: () => AsyncStorage.clear() },
+      ],
     );
   }
 
@@ -114,28 +114,42 @@ class ProfileScreen extends React.Component {
         />
 
         <OptionItem
-          text={'Clear all data'}
+          text={'Clear async storage data'}
           icon={'remove'}
           iconColor={Colors.danger}
           onPress={this.clearAsyncStorage}
           marginBottom={40}
         />
+
+        {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+        {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
       </View>
     );
   }
 }
 
-ProfileScreen.route = {
-  navigationBar: {
-    visible: true,
-    renderTitle: () => <Header headerText={'Profile'} />,
-    backgroundColor: Colors.rmotrB,
-    tintColor: Colors.rmotrC
-  }
+ProfileScreen.navigationOptions = {
+  header: {
+    title: 'Profile',
+    tintColor: Colors.rmotrC,
+    style: {
+      backgroundColor: Colors.rmotrB,
+    },
+  },
+  tabBar: {
+    label: 'Profile',
+    icon: ({ tintColor }) => (
+      <FontAwesome
+        name={'user'}
+        size={26}
+        color={tintColor}
+      />
+    ),
+  },
 };
 
 ProfileScreen.propTypes = {
-  logout: PropTypes.func
+  logout: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -144,8 +158,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#EEE',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'stretch'
-  }
+    alignItems: 'stretch',
+  },
 });
 
 export default ProfileScreen;

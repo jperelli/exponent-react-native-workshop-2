@@ -10,7 +10,7 @@ class CommentForm extends React.Component {
     super(props);
 
     this.state = {
-      comment: ''
+      comment: '',
     };
 
     this.saveComment = this.saveComment.bind(this);
@@ -28,7 +28,7 @@ class CommentForm extends React.Component {
         name: 'Anonymous',
         comment: this.state.comment,
         profile: 'https://randomuser.me/api/portraits/lego/1.jpg',
-        creationDate: moment().format()
+        creationDate: moment().format(),
       };
 
       this.props.addComment(comment);
@@ -67,7 +67,7 @@ class CommentForm extends React.Component {
 
 CommentForm.propTypes = {
   comment: PropTypes.object,
-  addComment: PropTypes.func
+  addComment: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -77,33 +77,33 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'stretch',
     borderTopWidth: 1,
-    borderColor: '#ddd'
+    borderColor: '#ddd',
   },
 
   commentInput: {
     flex: 1,
     height: 40,
     fontSize: 13,
-    padding: 10
+    padding: 10,
   },
 
   commentText: {
     justifyContent: 'center',
-    padding: 10
+    padding: 10,
   },
 
   text: {
     color: Colors.primary,
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 
   textOff: {
     color: Colors.primary,
     fontSize: 14,
     fontWeight: 'bold',
-    opacity: 0.5
-  }
+    opacity: 0.5,
+  },
 });
 
 export default CommentForm;

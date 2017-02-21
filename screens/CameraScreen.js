@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Platform, StatusBar, StyleSheet } from 'react-native';
+import { Foundation } from '@exponent/vector-icons';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import Colors from '../constants/Colors';
-import Header from '../components/Header';
 import ImageForm from '../components/ImageForm';
 import CameraOpenRoll from '../components/CameraOpenRoll';
 import CameraTakePhoto from '../components/CameraTakePhoto';
@@ -17,7 +17,7 @@ class CameraScreen extends React.Component {
     this.state = {
       selectedOption: 'Camera roll',
       photo: {},
-      caption: ''
+      caption: '',
     };
   }
 
@@ -36,7 +36,7 @@ class CameraScreen extends React.Component {
   render() {
     const options = [
       'Camera roll',
-      'Take a new photo'
+      'Take a new photo',
     ];
 
     let cameraComponent;
@@ -78,31 +78,45 @@ class CameraScreen extends React.Component {
         { cameraComponent }
 
         { imageForm }
+
+        {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+        {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
       </View>
     );
   }
 }
 
-CameraScreen.route = {
-  navigationBar: {
-    visible: true,
-    renderTitle: () => <Header headerText={'Camera'} />,
-    backgroundColor: Colors.rmotrB,
-    tintColor: Colors.rmotrC
-  }
+CameraScreen.navigationOptions = {
+  header: {
+    title: 'Camera',
+    tintColor: Colors.rmotrC,
+    style: {
+      backgroundColor: Colors.rmotrB,
+    },
+  },
+  tabBar: {
+    label: 'Camera',
+    icon: ({ tintColor }) => (
+      <Foundation
+        name={'camera'}
+        size={26}
+        color={tintColor}
+      />
+    ),
+  },
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EEE'
+    backgroundColor: '#EEE',
   },
 
   segmentedControls: {
     backgroundColor: Colors.rmotrB,
     padding: 7,
-    paddingTop: 1
-  }
+    paddingTop: 1,
+  },
 });
 
 export default CameraScreen;

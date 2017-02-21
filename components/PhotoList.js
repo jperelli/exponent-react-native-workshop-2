@@ -12,7 +12,7 @@ class PhotoList extends React.Component {
     this.onRefresh = this.onRefresh.bind(this);
     this.state = {
       photos: [],
-      refreshing: false
+      refreshing: false,
     };
   }
 
@@ -49,8 +49,8 @@ class PhotoList extends React.Component {
           likes: 0,
           latitude: 35,
           longitude: 74,
-          creationDate: now
-        }]
+          creationDate: now,
+        }],
       }, resolve);
     });
     // THIS IS PLACEHOLDER CODE //
@@ -61,7 +61,7 @@ class PhotoList extends React.Component {
       <PhotoDetail
         key={photo.id}
         photo={photo}
-      />
+      />,
     );
   }
 
@@ -94,7 +94,7 @@ class PhotoList extends React.Component {
 
 PhotoList.propTypes = {
   photos: PropTypes.object,
-  fetchPhotos: PropTypes.func
+  fetchPhotos: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     color: '#AAA',
     fontSize: 14,
     textAlign: 'center',
-    marginTop: 30
-  }
+    marginTop: 30,
+  },
 });
 
 export default PhotoList;

@@ -28,14 +28,14 @@ const ProfileCard = () => (
 );
 
 ProfileCard.propTypes = {
-  auth: PropTypes.object
+  auth: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
   viewStyle: {
     height: 200,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   image: {
@@ -44,21 +44,21 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 3,
     borderColor: '#FFF',
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   username: {
     color: '#FFF',
     backgroundColor: 'transparent',
     fontSize: 16,
-    fontWeight: '700'
+    fontWeight: '700',
   },
 
   email: {
     color: '#EEE',
     backgroundColor: 'transparent',
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 });
 
 export default ProfileCard;

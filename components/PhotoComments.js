@@ -16,7 +16,7 @@ class PhotoComments extends React.Component {
 
   componentWillMount() {
     this.setState({
-      comments: photoComments
+      comments: photoComments,
     });
   }
 
@@ -32,7 +32,7 @@ class PhotoComments extends React.Component {
       <PhotoComment
         key={comment.id}
         comment={comment}
-      />
+      />,
     );
   }
 
@@ -53,7 +53,7 @@ class PhotoComments extends React.Component {
 }
 
 PhotoComments.propTypes = {
-  comment: PropTypes.object
+  comment: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
     color: '#AAA',
     fontSize: 14,
     textAlign: 'center',
-    marginTop: 30
+    marginTop: 30,
   },
 
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default PhotoComments;

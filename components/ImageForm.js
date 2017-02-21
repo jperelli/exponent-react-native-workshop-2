@@ -2,12 +2,11 @@ import React, { PropTypes } from 'react';
 import { View, Text, TextInput,
          Alert, AsyncStorage, TouchableOpacity,
          StyleSheet } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import Image from 'react-native-image-progress';
-import { withNavigation } from '@exponent/ex-navigation';
 import moment from 'moment';
 import Colors from '../constants/Colors';
 
-@withNavigation
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -27,8 +26,8 @@ class ImageForm extends React.Component {
       null,
       [
         { text: 'Save', onPress: () => this.savePhoto() },
-        { text: 'Cancel', onPress: () => null, style: 'cancel' }
-      ]
+        { text: 'Cancel', onPress: () => null, style: 'cancel' },
+      ],
     );
   }
 
@@ -42,15 +41,13 @@ class ImageForm extends React.Component {
       'Saved!',
       'Redirecting to photo gallery...',
       [
-        { text: 'OK', onPress: () => this.goToGallery() }
-      ]
+        { text: 'OK', onPress: () => this.goToGallery() },
+      ],
     );
   }
 
   goToGallery() {
-    this.props.navigation.performAction(({ tabs }) => {
-      tabs('tab-navigation').jumpToTab('photoGallery');
-    });
+    this.props.navigation.navigate('GalleryTab');
   }
 
   render() {
@@ -91,18 +88,18 @@ ImageForm.propTypes = {
   setPhoto: PropTypes.func.isRequired,
   caption: PropTypes.string.isRequired,
   photo: PropTypes.object.isRequired,
-  navigation: PropTypes.object
+  navigation: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEE',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   loadingIndicator: {
-    marginRight: 15
+    marginRight: 15,
   },
 
   imageContainer: {
@@ -110,42 +107,42 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 1
+    elevation: 1,
   },
 
   formContainer: {
     backgroundColor: '#FFF',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
 
   textInput: {
     flex: 1,
     height: 40,
     fontSize: 13,
-    padding: 10
+    padding: 10,
   },
 
   inputContainer: {
     backgroundColor: '#FFF',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   shareTextContainer: {
     justifyContent: 'center',
-    padding: 10
+    padding: 10,
   },
 
   shareText: {
     color: Colors.primary,
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 
   image: {
-    height: 280
-  }
+    height: 280,
+  },
 });
 
-export default ImageForm;
+export default withNavigation(ImageForm);

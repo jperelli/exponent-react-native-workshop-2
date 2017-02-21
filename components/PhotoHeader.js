@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
 import { View, Text, TouchableOpacity,
          StyleSheet, Share } from 'react-native';
-import { withNavigation } from '@exponent/ex-navigation';
+import { withNavigation } from 'react-navigation';
 import Image from 'react-native-image-progress';
 import { Ionicons } from '@exponent/vector-icons';
-import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 
-@withNavigation
 class PhotoHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +18,7 @@ class PhotoHeader extends React.Component {
       url: 'https://rmotr.com',
       title: 'Learn to code in a remote classroom',
       message: 'Real teacher, real classmates, real assignments, but remote.',
-      dialogTitle: 'Learn to code in a remote classroom'
+      dialogTitle: 'Learn to code in a remote classroom',
     });
   }
 
@@ -28,10 +26,10 @@ class PhotoHeader extends React.Component {
     const params = {
       locationName: this.props.locationName,
       latitude: this.props.latitude,
-      longitude: this.props.longitude
+      longitude: this.props.longitude,
     };
 
-    this.props.navigator.push(Router.getRoute('map', params));
+    this.props.navigation.navigate('Map', params);
   }
 
   render() {
@@ -75,7 +73,7 @@ PhotoHeader.propTypes = {
   locationName: PropTypes.string.isRequired,
   latitude: PropTypes.number,
   longitude: PropTypes.number,
-  navigator: PropTypes.array
+  navigation: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
@@ -83,12 +81,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 5
+    padding: 5,
   },
 
   headerLeft: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   headerImage: {
@@ -97,26 +95,26 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: '#eee'
+    borderColor: '#eee',
   },
 
   headerText: {
     color: Colors.rmotrB,
     fontSize: 13,
-    fontWeight: '700'
+    fontWeight: '700',
   },
 
   headerLocation: {
     fontSize: 12,
     fontWeight: '400',
-    marginTop: 2
+    marginTop: 2,
   },
 
   shareIcon: {
     color: Colors.rmotrB100,
     fontSize: 18,
-    padding: 10
-  }
+    padding: 10,
+  },
 });
 
-export default PhotoHeader;
+export default withNavigation(PhotoHeader);

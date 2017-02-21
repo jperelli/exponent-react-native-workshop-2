@@ -14,7 +14,7 @@ class CameraOpenRoll extends React.Component {
   showRoll() {
     const imagePickerConfig = {
       allowsEditing: true,
-      aspect: [1, 1]
+      aspect: [1, 1],
     };
 
     ImagePicker.launchImageLibraryAsync(imagePickerConfig)
@@ -43,30 +43,30 @@ class CameraOpenRoll extends React.Component {
 }
 
 CameraOpenRoll.propTypes = {
-  setPhoto: PropTypes.func.isRequired
+  setPhoto: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
   viewStyle: {
-    backgroundColor: Colors.rmotrB
+    backgroundColor: Colors.rmotrB,
   },
 
   linearGradient: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   iconContainer: {
     backgroundColor: '#DDD',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   icon: {
     backgroundColor: 'transparent',
     color: '#FFF',
     fontSize: 38,
-    padding: 5
-  }
+    padding: 5,
+  },
 });
 
 export default CameraOpenRoll;

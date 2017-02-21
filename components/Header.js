@@ -11,7 +11,7 @@ const Header = props => (
 );
 
 Header.propTypes = {
-  headerText: PropTypes.string.isRequired
+  headerText: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.rmotrB,
     height: 45,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   textStyle: {
     color: Colors.rmotrC,
     fontSize: 16,
-    fontWeight: '500'
-  }
+    fontWeight: '500',
+  },
 });
 
 export default Header;

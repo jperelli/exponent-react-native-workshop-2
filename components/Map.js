@@ -9,13 +9,13 @@ const Map = props => (
       latitude: props.latitude,
       longitude: props.longitude,
       latitudeDelta: 0.15,
-      longitudeDelta: 0.08
+      longitudeDelta: 0.08,
     }}
   >
     <Components.MapView.Marker
       coordinate={{
         latitude: props.latitude,
-        longitude: props.longitude
+        longitude: props.longitude,
       }}
     />
   </Components.MapView>
@@ -23,13 +23,13 @@ const Map = props => (
 
 Map.propTypes = {
   latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired
+  longitude: PropTypes.number.isRequired,
 };
 
 const styles = StyleSheet.create({
   mapView: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default Map;

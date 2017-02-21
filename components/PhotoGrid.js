@@ -20,7 +20,7 @@ const renderPhotos = () => {
     { id: 11, url: 'http://placeimg.com/201/201/any' },
     { id: 12, url: 'http://placeimg.com/202/202/any' },
     { id: 13, url: 'http://placeimg.com/203/203/any' },
-    { id: 14, url: 'http://placeimg.com/204/204/any' }
+    { id: 14, url: 'http://placeimg.com/204/204/any' },
   ];
 
   return map(photos, photo =>
@@ -35,7 +35,7 @@ const renderPhotos = () => {
            alt={photo}
          />
        </View>
-    )
+    ),
   );
 };
 
@@ -56,21 +56,21 @@ const PhotoGrid = () => (
 
 const styles = StyleSheet.create({
   container: {
-    margin: 3
+    margin: 3,
   },
 
   title: {
     margin: 10,
     color: '#AAA',
     fontSize: 13,
-    fontWeight: '600'
+    fontWeight: '600',
   },
 
   image: {
     height: 200,
     width: 200,
-    marginRight: 3
-  }
+    marginRight: 3,
+  },
 
 });
 

@@ -1,12 +1,9 @@
 import React, { PropTypes } from 'react';
 import { View, Text, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@exponent/vector-icons';
-import { withNavigation } from '@exponent/ex-navigation';
 import moment from 'moment';
-import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 
-@withNavigation
 class PhotoFooter extends React.Component {
   constructor(props) {
     super(props);
@@ -17,13 +14,13 @@ class PhotoFooter extends React.Component {
   goToComments() {
     /**
     YOUR ASSIGNMENT:
-      Use the navigator (this.props.navigator) to open the comments screen.
+      Use navigation to open the comments screen.
       The comment screen is defined in Router.js.
-      It's defined by name as 'photoComments'.
+      It's defined by name as 'Comments'.
     */
     Alert.alert(
       'You should remove this alert and take me to the comments screen 🍰',
-      null
+      null,
     );
   }
 
@@ -90,14 +87,14 @@ PhotoFooter.propTypes = {
   likes: PropTypes.number,
   isLiked: PropTypes.bool,
   likePhoto: PropTypes.func.isRequired,
-  navigator: PropTypes.array
+  navigator: PropTypes.array,
 };
 
 const styles = StyleSheet.create({
   footer: {
     flexDirection: 'column',
     padding: 5,
-    paddingLeft: 7
+    paddingLeft: 7,
   },
 
   footerTop: {
@@ -105,52 +102,52 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
     borderBottomWidth: 1,
-    borderColor: '#eee'
+    borderColor: '#eee',
   },
 
   footerIcon: {
     fontSize: 26,
     padding: 4,
-    paddingRight: 10
+    paddingRight: 10,
   },
 
   footerMiddle: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   likesText: {
     color: Colors.rmotrB,
     fontSize: 13,
     fontWeight: '700',
-    marginLeft: 5
+    marginLeft: 5,
   },
 
   footerBottom: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    marginTop: 5
+    marginTop: 5,
   },
 
   footerText: {
     color: Colors.rmotrB,
     fontSize: 13,
-    fontWeight: '700'
+    fontWeight: '700',
   },
 
   photoCaption: {
     color: Colors.rmotrB,
     fontSize: 13,
     fontWeight: '400',
-    paddingLeft: 3
+    paddingLeft: 3,
   },
 
   footerHour: {
     color: '#AAA',
     fontSize: 10,
     fontWeight: '400',
-    paddingTop: 5
-  }
+    paddingTop: 5,
+  },
 });
 
 export default PhotoFooter;

@@ -3,7 +3,7 @@ import { Asset, Font } from 'exponent';
 const cacheAssetsAsync = ({ images = [], fonts = [] }) => (
   Promise.all([
     ...cacheImages(images),
-    ...cacheFonts(fonts)
+    ...cacheFonts(fonts),
   ])
 );
 

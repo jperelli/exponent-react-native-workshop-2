@@ -28,5 +28,5 @@ export default {
   danger,
   danger700,
   tabIconDefault: '#555',
-  tabIconSelected: rmotrC
+  tabIconSelected: rmotrC,
 };

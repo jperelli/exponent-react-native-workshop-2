@@ -32,7 +32,7 @@ const PhotoDetail = props => (
 );
 
 PhotoDetail.propTypes = {
-  comment: PropTypes.object.isRequired
+  comment: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -42,13 +42,13 @@ const styles = StyleSheet.create({
     padding: 5,
     marginTop: 5,
     borderBottomWidth: 1,
-    borderColor: '#eee'
+    borderColor: '#eee',
   },
 
   containerLeft: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   commentImage: {
@@ -57,32 +57,32 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: '#eee'
+    borderColor: '#eee',
   },
 
   commentUser: {
     color: Colors.rmotrB,
     fontSize: 13,
-    fontWeight: '700'
+    fontWeight: '700',
   },
 
   commentText: {
     fontSize: 13,
     fontWeight: '400',
-    marginTop: 2
+    marginTop: 2,
   },
 
   containerRight: {
     marginRight: 10,
     flexDirection: 'row',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
 
   commentDate: {
     color: '#bbb',
     fontSize: 10,
-    fontWeight: '700'
-  }
+    fontWeight: '700',
+  },
 });
 
 export default PhotoDetail;

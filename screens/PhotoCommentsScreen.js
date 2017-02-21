@@ -1,30 +1,42 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { NavigationStyles } from '@exponent/ex-navigation';
+import { View, Platform, StatusBar, StyleSheet } from 'react-native';
+import { Foundation } from '@exponent/vector-icons';
 import Colors from '../constants/Colors';
-import Header from '../components/Header';
 import PhotoComments from '../components/PhotoComments';
 
 const PhotoCommentsScreen = () => (
   <View style={styles.container}>
     <PhotoComments />
+
+    {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+    {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
   </View>
 );
 
-PhotoCommentsScreen.route = {
-  navigationBar: {
-    visible: true,
-    renderTitle: () => <Header headerText={'Comments'} />,
-    backgroundColor: Colors.rmotrB,
-    tintColor: Colors.rmotrC
+PhotoCommentsScreen.navigationOptions = {
+  header: {
+    title: 'Comments',
+    tintColor: Colors.rmotrC,
+    style: {
+      backgroundColor: Colors.rmotrB,
+    },
   },
-  styles: NavigationStyles.FloatHorizontal
+  tabBar: {
+    label: 'Gallery',
+    icon: ({ tintColor }) => (
+      <Foundation
+        name={'home'}
+        size={26}
+        color={tintColor}
+      />
+    ),
+  },
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default PhotoCommentsScreen;

@@ -10,7 +10,7 @@ const BillabongText = props => (
 
 BillabongText.propTypes = {
   style: PropTypes.number,
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
 };
 
 export default BillabongText;
