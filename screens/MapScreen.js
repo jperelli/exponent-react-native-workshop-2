@@ -1,18 +1,16 @@
 import React, { PropTypes } from 'react';
-import { View, Text,
-         Platform, StatusBar, StyleSheet } from 'react-native';
+import { View, Platform, StatusBar, StyleSheet } from 'react-native';
 import { Foundation } from '@exponent/vector-icons';
 import Colors from '../constants/Colors';
-// import Map from '../components/Map';
+import Map from '../components/Map';
 import PhotoGrid from '../components/PhotoGrid';
 
 const MapScreen = props => (
   <View style={styles.container}>
-    <View style={styles.placeholder}>
-      <Text style={styles.placeholderText}>
-        Map goes here!
-      </Text>
-    </View>
+    <Map
+      latitude={props.navigation.state.params.latitude}
+      longitude={props.navigation.state.params.longitude}
+    />
 
     <PhotoGrid />
 
