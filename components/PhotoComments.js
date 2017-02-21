@@ -8,7 +8,7 @@ import photoComments from '../data/photoComments.json';
 class PhotoComments extends React.Component {
   constructor(props) {
     super(props);
-    // TODO: Remove all the logic dealing with state.
+
     this.state = { comments: [] };
 
     this.addComment = this.addComment.bind(this);
@@ -21,10 +21,10 @@ class PhotoComments extends React.Component {
   }
 
   addComment(comment) {
-    const comments = this.state.comments;
-    comments.push(comment);
-
-    this.setState({ comments });
+    /**
+      YOUR ASSIGNMENT:
+        Include a new comments to the comments list.
+    */
   }
 
   renderComments() {
