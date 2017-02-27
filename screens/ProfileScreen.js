@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { View, Alert, AsyncStorage,
-         Platform, StatusBar, StyleSheet } from 'react-native';
-import Exponent, { Permissions } from 'exponent';
+         Platform, StatusBar,
+         Text, StyleSheet } from 'react-native';
+import { Permissions, Util, Location,
+         Constants, Facebook } from 'exponent';
 import { FontAwesome } from '@exponent/vector-icons';
 import { map, includes } from 'lodash';
 import Colors from '../constants/Colors';
@@ -10,17 +12,33 @@ import ProfileCard from '../components/ProfileCard';
 import OptionItem from '../components/OptionItem';
 
 class ProfileScreen extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
-      name: null,
+      locationName: null,
       lat: null,
       lng: null,
       locale: null,
+      deviceInfo: null,
+      facebookName: null,
+      facebookEmail: null,
+      facebookPicture: null,
+      facebookToken: null,
     };
-    this.getPosition = this.getPosition.bind(this);
+
     this.getLocale = this.getLocale.bind(this);
+    this.getPosition = this.getPosition.bind(this);
+    this.facebookLogin = this.facebookLogin.bind(this);
+  }
+
+  getLocale() {
+    Util.getCurrentLocaleAsync()
+    .then((response) => {
+      this.setState({
+        locale: response,
+      });
+    });
   }
 
   getPosition() {
@@ -40,14 +58,14 @@ class ProfileScreen extends React.Component {
           const { status } = res;
 
           if (status === 'granted') {
-            Exponent.Location.getCurrentPositionAsync(options)
+            Location.getCurrentPositionAsync(options)
             .then((response) => {
               const infoUrl = googleConfig.getInfoUrl(response.coords.latitude, response.coords.longitude);
 
               return fetch(infoUrl)
               .then(resp => resp.json())
               .then((json) => {
-                const locationInfo = json.results[0];
+                const [locationInfo] = json.results;
                 let locality;
                 let country;
 
@@ -60,7 +78,7 @@ class ProfileScreen extends React.Component {
                 });
 
                 this.setState({
-                  name: `${locality}, ${country}`,
+                  locationName: `${locality}, ${country}`,
                   lat: locationInfo.geometry.location.lat,
                   lng: locationInfo.geometry.location.lng,
                 });
@@ -72,12 +90,36 @@ class ProfileScreen extends React.Component {
     });
   }
 
-  getLocale() {
-    Exponent.Util.getCurrentLocaleAsync()
+  facebookLogin() {
+    const appID = '1778170955764424';
+    const options = {
+      behavior: 'web',
+      permissions: ['public_profile', 'email'],
+    };
+
+    Facebook.logInWithReadPermissionsAsync(appID, options)
     .then((response) => {
-      this.setState({
-        locale: response,
-      });
+      const { type, token } = response;
+
+      if (type === 'success') {
+        // get Facebook data
+        fetch(`https://graph.facebook.com/me?fields=name,email,picture&access_token=${token}`)
+        .then(data => data.json())
+        .then((dataJson) => {
+          this.setState({
+            facebookName: dataJson.name,
+            facebookEmail: dataJson.email,
+            facebookPicture: dataJson.picture.data.url,
+            facebookToken: token,
+          });
+        }, (err) => {
+          Alert.alert(
+            'Error!',
+            err,
+            [{ text: 'OK', onPress: () => {} }],
+          );
+        });
+      }
     });
   }
 
@@ -93,9 +135,23 @@ class ProfileScreen extends React.Component {
   }
 
   render() {
+    const { isDevice, deviceName, deviceYearClass, exponentVersion } = Constants;
+
     return (
       <View style={styles.container}>
-        <ProfileCard />
+        <ProfileCard
+          name={this.state.facebookName}
+          picture={this.state.facebookPicture}
+          email={this.state.facebookEmail}
+        />
+
+        <OptionItem
+          text={this.state.facebookName ? `Hello ${this.state.facebookName}` : 'Login with Facebook'}
+          icon={'facebook'}
+          iconColor={Colors.primary}
+          onPress={this.facebookLogin}
+          marginBottom={10}
+        />
 
         <OptionItem
           text={this.state.locale ? `Current locale: ${this.state.locale}` : 'Get device locale'}
@@ -106,9 +162,9 @@ class ProfileScreen extends React.Component {
         />
 
         <OptionItem
-          text={this.state.name ? this.state.name : 'Get my position'}
+          text={this.state.locationName || 'Get my position'}
           icon={'map-marker'}
-          iconColor={Colors.primary}
+          iconColor={Colors.warning}
           onPress={this.getPosition}
           marginBottom={10}
         />
@@ -120,6 +176,12 @@ class ProfileScreen extends React.Component {
           onPress={this.clearAsyncStorage}
           marginBottom={40}
         />
+
+        <View style={styles.infoBlock}>
+          <Text>{`Is device?: ${isDevice}`}</Text>
+          <Text>{`Device name/year: ${deviceName}/${deviceYearClass}`}</Text>
+          <Text>{`Exponent version: ${exponentVersion}`}</Text>
+        </View>
 
         {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
         {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
@@ -148,17 +210,18 @@ ProfileScreen.navigationOptions = {
   },
 };
 
-ProfileScreen.propTypes = {
-  logout: PropTypes.func,
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEE',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'stretch',
+  },
+
+  infoBlock: {
+    backgroundColor: '#CCC',
+    padding: 10,
   },
 });
 
