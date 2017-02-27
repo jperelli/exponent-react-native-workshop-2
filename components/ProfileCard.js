@@ -4,7 +4,7 @@ import { Components } from 'exponent';
 import Image from 'react-native-image-progress';
 import Colors from '../constants/Colors';
 
-const ProfileCard = () => (
+const ProfileCard = props => (
   <ScrollView>
     <Components.LinearGradient
       colors={[Colors.rmotrB300, Colors.rmotrB100]}
@@ -12,36 +12,38 @@ const ProfileCard = () => (
     >
       <Image
         style={styles.image}
-        source={{ uri: 'https://randomuser.me/api/portraits/lego/1.jpg' }}
+        source={{ uri: props.picture || 'https://randomuser.me/api/portraits/lego/1.jpg' }}
         alt={'Image'}
       />
 
       <Text style={styles.username}>
-        Anonymous
+        {props.name || 'Anonymous'}
       </Text>
 
       <Text style={styles.email}>
-        anonymous@rmotr.com
+        {props.email || 'anonymous@rmotr.com'}
       </Text>
     </Components.LinearGradient>
   </ScrollView>
 );
 
 ProfileCard.propTypes = {
-  auth: PropTypes.object,
+  name: PropTypes.string,
+  email: PropTypes.string,
+  picture: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
   viewStyle: {
-    height: 200,
+    height: 150,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   image: {
-    height: 100,
-    width: 100,
-    borderRadius: 50,
+    height: 90,
+    width: 90,
+    borderRadius: 45,
     borderWidth: 3,
     borderColor: '#FFF',
     marginBottom: 10,
