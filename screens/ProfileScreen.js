@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Alert, AsyncStorage,
          Platform, StatusBar,
          Text, StyleSheet } from 'react-native';
-import { Permissions, Util, Location, Constants } from 'exponent';
+import { Permissions, Util, Location,
+         Constants, Facebook } from 'exponent';
 import { FontAwesome } from '@exponent/vector-icons';
 import { map, includes } from 'lodash';
 import Colors from '../constants/Colors';
@@ -23,6 +24,7 @@ class ProfileScreen extends React.Component {
       facebookName: null,
       facebookEmail: null,
       facebookPicture: null,
+      facebookToken: null,
     };
 
     this.getLocale = this.getLocale.bind(this);
@@ -89,7 +91,36 @@ class ProfileScreen extends React.Component {
   }
 
   facebookLogin() {
+    const appID = '1778170955764424';
+    const options = {
+      behavior: 'web',
+      permissions: ['public_profile', 'email'],
+    };
 
+    Facebook.logInWithReadPermissionsAsync(appID, options)
+    .then((response) => {
+      const { type, token } = response;
+
+      if (type === 'success') {
+        // get Facebook data
+        fetch(`https://graph.facebook.com/me?fields=name,email,picture&access_token=${token}`)
+        .then(data => data.json())
+        .then((dataJson) => {
+          this.setState({
+            facebookName: dataJson.name,
+            facebookEmail: dataJson.email,
+            facebookPicture: dataJson.picture.data.url,
+            facebookToken: token,
+          });
+        }, (err) => {
+          Alert.alert(
+            'Error!',
+            err,
+            [{ text: 'OK', onPress: () => {} }],
+          );
+        });
+      }
+    });
   }
 
   clearAsyncStorage() {
@@ -115,7 +146,7 @@ class ProfileScreen extends React.Component {
         />
 
         <OptionItem
-          text={this.state.facebookName ? `Hello ${this.state.locale}` : 'Login with Facebook'}
+          text={this.state.facebookName ? `Hello ${this.state.facebookName}` : 'Login with Facebook'}
           icon={'facebook'}
           iconColor={Colors.primary}
           onPress={this.facebookLogin}
