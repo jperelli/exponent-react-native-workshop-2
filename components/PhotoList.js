@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { ScrollView, Text, StyleSheet,
          AsyncStorage, RefreshControl } from 'react-native';
 import PhotoDetail from './PhotoDetail';
-
 import moment from 'moment';
 
 class PhotoList extends React.Component {
