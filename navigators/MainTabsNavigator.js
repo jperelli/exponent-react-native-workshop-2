@@ -18,10 +18,17 @@ const MainTabsNavigator = TabNavigator(
   },
   {
     initialRouteName: 'GalleryTab',
+    tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: Colors.rmotrC,
       activeBackgroundColor: Colors.rmotrB,
       inactiveBackgroundColor: Colors.rmotrB,
+      indicatorStyle: {
+        backgroundColor: Colors.rmotrC,
+      },
+      style: {
+        backgroundColor: Colors.rmotrB,
+      },
     },
   },
 );
