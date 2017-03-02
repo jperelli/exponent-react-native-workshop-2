@@ -10,6 +10,10 @@ const MapScreen = props => (
   <View style={styles.container}>
     <View style={styles.placeholder}>
       <Text style={styles.placeholderText}>
+        {/* YOUR ASSIGNMENT:
+          Show our Map.js component with a marker on
+          the location passed on route params. */}
+
         Map goes here!
       </Text>
     </View>

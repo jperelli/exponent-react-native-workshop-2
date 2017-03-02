@@ -32,18 +32,16 @@ class ImageForm extends React.Component {
   }
 
   savePhoto() {
+    // Set default caption if empty
+    if (!this.props.caption) this.props.setCaption('Funny text goes here 😁');
+
     /**
     YOUR ASSIGNMENT:
-      Use AsyncStorage to save the photo taken by ImagePicker.
+      Use AsyncStorage to save the photo and its caption.
+
+      As 'value' we will have an image object
+      with 'uri' and 'caption' attributes
     */
-    console.log(this.props.photo);
-    Alert.alert(
-      'Saved!',
-      'Redirecting to photo gallery...',
-      [
-        { text: 'OK', onPress: () => this.goToGallery() },
-      ],
-    );
   }
 
   goToGallery() {
@@ -85,7 +83,6 @@ class ImageForm extends React.Component {
 
 ImageForm.propTypes = {
   setCaption: PropTypes.func.isRequired,
-  setPhoto: PropTypes.func.isRequired,
   caption: PropTypes.string.isRequired,
   photo: PropTypes.object.isRequired,
   navigation: PropTypes.object,

@@ -31,9 +31,9 @@ class PhotoList extends React.Component {
   getPhotos() {
     /**
     YOUR ASSIGNMENT:
-      Use AsyncStorage to retrieve all the photos saved by the ImagePicker
-      component.
+      Use AsyncStorage to retrieve all the previously saved photos.
     */
+
     // THIS IS PLACEHOLDER CODE //
     return new Promise((resolve, reject) => {
       const now = moment().format();

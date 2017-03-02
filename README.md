@@ -10,26 +10,26 @@ https://exp.host/@test123/exponent-react-native-workshop-2
 
 ## Assignments
 
-#### 1) StackNavigation from photos feed to photo comments
+#### 1) Expand our _GalleryStackNavigator_
 
-Task description.
+Add two new routes to the _GalleryStackNavigator_ that contains _PhotoCommentsScreen_ and _MapScreen_.
 
-#### 2) TabNavigation to camera and profile screens
+#### 2) Add _TabNavigator_ with three tabs
 
-Task description.
+Our app now will have three tabs. The first one will contain out _GalleryStackNavigator_; the second one will have a new _CameraStackNavigator_ and the last one will have a new _ProfileStackNavigator_.
 
-#### 3) Comments screen with comments feed and form to add new comments
+#### 3) Allow users to post new comments on each photo
 
-Task description.
+On _PhotoComments.js_ component you will have to write an _addComment_ function that updates the state pushing a new comment to the comments list.
 
-#### 4) Take photos with phone camera, or take it from camera roll, show it on screen and save it using AsyncStorage
+#### 4) Save new photos using _AsyncStorage_
 
-Task description.
+Our _CameraScreen.js_ component have two functions to set photo and its caption data. These functions are passed as props to _CameraOpenRoll_, _CameraTakePhoto_ and _ImageForm_ (if there is a photo on state, this component will show a form to set a caption). On that last mentioned component write a _savePhoto_ function that use _AsyncStorage_ to save the photo and its caption.
 
-#### 5) Refactor photos feed showing photos from AsyncStorage
+#### 5) Refactor photos feed showing previously saved photos
 
-Task description.
+On _PhotoList.js_ component you will have to write a _getPhotos_ function that uses _AsyncStorage_ to retrieve all the previously saved photos.
 
-#### 6) StackNavigation to a map screen showing photo mocked location
+#### 6) Show our _Map_ component with a marker on the location passed on route params
 
-Task description.
+On _PhotoHeader.js_ component we have a _goToMap_ function that passes location info as params to our _MapScreen.js_ component. There we will have to get that params and pass them to the _Map.js_ component to render a marker pointing that location on a map.
